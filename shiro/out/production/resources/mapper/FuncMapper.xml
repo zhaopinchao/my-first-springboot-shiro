@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zpc.shiro.mapper.FuncMapper" >
+
+    <resultMap id="funcMap" type="com.zpc.shiro.entity.Func">
+        <result column="func_id" property="func_id" jdbcType="INTEGER"/>
+        <result column="func_name" property="func_name" jdbcType="VARCHAR"/>
+        <result column="func_code" property="func_code" jdbcType="VARCHAR"/>
+        <result column="func_url" property="func_url" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parent_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--
+        菜单的url格式为 /xxx.htm
+        功能的code格式为yyy
+        使用mysql的字符串与截取获得操作权限格式为xxx:yyy
+    -->
+    <select id="getFuncByUserName" parameterType="String" resultType="String">
+        SELECT
+            CONCAT_WS(':',
+                    SUBSTRING(m.menu_url,
+                        2,
+                        CHAR_LENGTH(m.menu_url) - 5),
+                    f.func_code) AS func_name
+        FROM
+            func f
+                INNER JOIN
+            menu_func mf ON mf.func_id = f.func_id
+                INNER JOIN
+            menu m ON m.menu_id = mf.menu_id
+                INNER JOIN
+            role_menu rm ON rm.menu_id = m.menu_id
+                INNER JOIN
+            t_role r ON r.role_id = rm.role_id
+                INNER JOIN
+            user_role ur ON r.role_id = ur.role_id
+                INNER JOIN
+            user_t u ON u.user_id = ur.user_id
+        WHERE
+            u.user_name = #{user_name}
+    </select>
+
+</mapper>

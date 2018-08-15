@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zpc.shiro.mapper.MenuMapper" >
+
+    <resultMap id="menuMap" type="com.zpc.shiro.entity.Menu">
+        <result column="menu_id" property="menu_id" jdbcType="INTEGER"/>
+        <result column="menu_name" property="menu_name" jdbcType="VARCHAR"/>
+        <result column="menu_url" property="menu_url" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parent_id" jdbcType="INTEGER"/>
+        <collection property="funcs" ofType="com.zpc.shiro.entity.Func">
+            <result column="func_id" property="func_id" jdbcType="INTEGER"/>
+            <result column="func_name" property="func_name" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.zpc.shiro.utils.AESUtilTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-28T13:49:39" hostname="LAPTOP-46AQNJAJ" time="0.363">
+  <properties/>
+  <testcase name="testAESEncodeAndDncode" classname="com.zpc.shiro.utils.AESUtilTest" time="0.363"/>
+  <system-out><![CDATA[21:49:39.370 [Test worker] INFO com.zpc.shiro.utils.AESUtilTest - 要加密的数据：123
+21:49:39.386 [Test worker] INFO com.zpc.shiro.utils.AESUtilTest - 加密开始时间：2018-07-28 21:49:39.386
+21:49:39.729 [Test worker] INFO com.zpc.shiro.utils.AESUtilTest - 加密结束时间：2018-07-28 21:49:39.729
+21:49:39.729 [Test worker] INFO com.zpc.shiro.utils.AESUtilTest - 加密后的数据：EjnqGbmYPuQodiamydUzVw==
+21:49:39.729 [Test worker] INFO com.zpc.shiro.utils.AESUtilTest - 解密结束时间：2018-07-28 21:49:39.729
+21:49:39.729 [Test worker] INFO com.zpc.shiro.utils.AESUtilTest - 解密后的数据：123
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

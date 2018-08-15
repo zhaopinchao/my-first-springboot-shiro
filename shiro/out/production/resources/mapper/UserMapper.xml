@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zpc.shiro.mapper.UserMapper" >
+
+    <resultMap id="userMap" type="com.zpc.shiro.entity.User">
+        <result column="user_id" property="user_id" jdbcType="INTEGER"/>
+        <result column="user_name" property="user_name" jdbcType="VARCHAR"/>
+        <result column="user_phone" property="user_phone" jdbcType="VARCHAR"/>
+        <result column="user_remark" property="user_remark" jdbcType="VARCHAR"/>
+        <result column="user_status" property="user_status" jdbcType="VARCHAR"/>
+        <collection property="department" ofType="com.zpc.shiro.entity.Department">
+            <result column="department_name" property="department_name" jdbcType="VARCHAR"></result>
+        </collection>
+        <collection property="roles" ofType="com.zpc.shiro.entity.Role">
+            <result column="role_name" property="role_name" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+    <select id="getUserByName" parameterType="String" resultType="com.zpc.shiro.entity.User">
+        select * from user_t where user_name = #{user_name}
+    </select>
+</mapper>
